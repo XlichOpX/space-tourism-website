@@ -15,11 +15,13 @@ const links = [
     evt.stopPropagation();
     const isOpen = !navbarNav.classList.toggle("navbar__nav--closed");
     navbarToggler.classList.toggle("navbar__toggler--close");
+    navbarToggler.setAttribute("aria-expanded", isOpen.toString());
 
     function handleClickOutside(evt) {
       if (!navbarNav.contains(evt.target)) {
         navbarNav.classList.add("navbar__nav--closed");
         navbarToggler.classList.remove("navbar__toggler--close");
+        navbarToggler.setAttribute("aria-expanded", "false");
         document.removeEventListener("click", handleClickOutside);
       }
     }
@@ -36,8 +38,12 @@ const links = [
   <div class="navbar__logo">
     <img class="navbar__logo-img" src="/shared/logo.svg" alt="An illustrated star" />
   </div>
-  <button type="button" class="navbar__toggler"><span class="sr-only">Menú</span></button>
-  <nav class="navbar__nav navbar__nav--closed">
+
+  <button type="button" class="navbar__toggler" aria-expanded="false" aria-controls="navbar__nav">
+    <span class="sr-only">Menú</span>
+  </button>
+
+  <nav id="navbar__nav" class="navbar__nav navbar__nav--closed">
     <ul class="navbar__links">
       {
         links.map((link, index) => (
