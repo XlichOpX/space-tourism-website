@@ -4,24 +4,106 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout title="Space Tourism">
   <main class="container">
-    <h1 class="h1">Space Tourism</h1>
-    <h2 class="h2">This is an h2</h2>
-    <h3 class="h3">This is an h3</h3>
-    <h4 class="h4">This is an h4</h4>
-    <h5 class="h5">This is an h5</h5>
-    <h6 class="sh1">This is a subheading 1</h6>
-    <h6 class="sh2">This is a subheading 2</h6>
-    <p class="paragraph">
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur dolorum hic cupiditate
-      quisquam maxime error ipsa ad iure alias. Itaque sit optio labore quae iure nobis aspernatur,
-      modi minima quaerat!
-    </p>
+    <div class="message-container">
+      <h1 class="h1"><div class="h5">So you want to travel to</div><div>Space</div></h1>
+      <p class="paragraph">
+        Let's face it; if you want to go to space, you might as well genuinely go to outer space and
+        not hover kind of on the edge of it. Well sit back, and relax because we'll give you a truly
+        out of this world experience!
+      </p>
+    </div>
+
+    <div class="cta-container"><a href="#" class="explore-btn">Explore</a></div>
   </main>
 </Layout>
 
 <style>
   body {
-    background-image: url("/home/background-home-desktop.jpg");
-    background-position: center;
+    background-image: url("/home/background-home-mobile.jpg");
+    background-position: center bottom;
+  }
+
+  .container {
+    padding: 3rem 1.5rem 4rem 1.5rem;
+    text-align: center;
+  }
+
+  .message-container {
+    margin-bottom: 5rem;
+  }
+
+  .message-container * + * {
+    margin-top: 1rem;
+  }
+
+  .explore-btn {
+    display: inline-grid;
+    place-items: center;
+    min-width: 9.375rem;
+    aspect-ratio: 1;
+    background-color: hsl(var(--clr-white));
+    border-radius: 50%;
+
+    font-family: var(--ff-serif);
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: hsl(var(--clr-dark));
+
+    transition: box-shadow 0.3s ease-in-out;
+    box-shadow: 0 0 0 0 hsl(var(--clr-white) / 1%);
+  }
+
+  .explore-btn:hover,
+  .explore-btn:focus {
+    box-shadow: 0 0 0 4rem hsl(var(--clr-white) / 10.36%);
+  }
+
+  @media (min-width: 48rem) {
+    body {
+      background-image: url("/home/background-home-tablet.jpg");
+    }
+
+    .message-container {
+      max-width: 28.125rem;
+      margin-inline: auto;
+      margin-bottom: 9.75rem;
+    }
+
+    .container {
+      padding-top: 6.625rem;
+    }
+
+    .explore-btn {
+      min-width: 15.125rem;
+    }
+  }
+
+  @media (min-width: 70rem) {
+    body {
+      background-image: url("/home/background-home-desktop.jpg");
+      background-position: right center;
+    }
+
+    .message-container {
+      margin: 0;
+    }
+
+    .cta-container {
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      text-align: left;
+      padding-top: 15.7rem;
+    }
+
+    .explore-btn {
+      min-width: 17.125rem;
+    }
   }
 </style>
