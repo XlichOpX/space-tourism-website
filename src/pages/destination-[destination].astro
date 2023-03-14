@@ -11,7 +11,7 @@ export function getStaticPaths() {
 }
 ---
 
-<Layout title="Space Tourism" activeLink="/destination-moon">
+<Layout title={`Destination - ${Astro.props.name}`} activeLink="/destination-moon">
   <main class="container">
     <div>
       <h1 class="h5 h5--white main-title">
