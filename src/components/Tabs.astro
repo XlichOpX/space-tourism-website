@@ -12,7 +12,10 @@ const { links } = Astro.props;
       <li>
         <a
           aria-current={Astro.url.pathname === link.href ? "page" : undefined}
-          class:list={{ tabs__link: true, "tabs__link--active": Astro.url.pathname === link.href }}
+          class:list={{
+            tabs__link: true,
+            "tabs__link--active": Astro.url.pathname.startsWith(link.href),
+          }}
           href={link.href}
         >
           {link.label}

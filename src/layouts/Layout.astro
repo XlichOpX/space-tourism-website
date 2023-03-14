@@ -43,8 +43,8 @@ const { title, activeLink } = Astro.props;
     /* font-sizes */
     --fs-h1: 5rem;
     --fs-h2: 3.5rem;
-    --fs-h3: 2.5rem;
-    --fs-h4: 1.5rem;
+    --fs-h3: 1.5rem;
+    --fs-h4: 1rem;
     --fs-h5: 1rem;
     --fs-sh1: 1.75rem;
     --fs-sh2: 0.875rem;
@@ -142,6 +142,10 @@ const { title, activeLink } = Astro.props;
   .h4 {
     font-size: var(--fs-h4);
     font-family: var(--ff-serif);
+  }
+
+  .h4--gray {
+    color: hsl(var(--clr-white) / 50%);
   }
 
   .h5 {

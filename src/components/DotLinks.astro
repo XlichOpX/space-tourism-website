@@ -1,0 +1,49 @@
+---
+interface Props {
+  links: { href: string; label: string }[];
+}
+
+const { links } = Astro.props;
+---
+
+<ul class="dot-links">
+  {
+    links.map((link) => (
+      <li>
+        <a
+          aria-current={Astro.url.pathname === link.href ? "page" : undefined}
+          class:list={[
+            "dot-links__link",
+            Astro.url.pathname.startsWith(link.href) && "dot-links__link--active",
+          ]}
+          href={link.href}
+        >
+          <span class="sr-only">{link.label}</span>
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .dot-links {
+    display: flex;
+    justify-content: var(--justify-content, center);
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    gap: 1rem;
+  }
+
+  .dot-links__link {
+    display: block;
+    width: 0.625rem;
+    aspect-ratio: 1;
+    background-color: hsl(var(--clr-white) / 17.44%);
+    border-radius: 50%;
+  }
+
+  .dot-links__link--active {
+    background-color: hsl(var(--clr-white));
+  }
+</style>

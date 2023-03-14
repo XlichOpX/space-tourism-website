@@ -1,0 +1,82 @@
+---
+import DotLinks from "../components/DotLinks.astro";
+import { crew } from "../data.json";
+import Layout from "../layouts/Layout.astro";
+import { uriEncode } from "../utils/urls";
+
+export function getStaticPaths() {
+  return crew.map((member) => ({
+    params: { role: uriEncode(member.role) },
+    props: { ...member },
+  }));
+}
+---
+
+<Layout title={`Crew - ${Astro.props.role}`} activeLink="/crew-commander">
+  <main class="container">
+    <h1 class="h5 h5--white main-title">
+      <span class="title-number" aria-hidden="true">02</span>Meet your crew
+    </h1>
+
+    <div class="member-img">
+      <picture>
+        <source srcset={Astro.props.images.webp} type="image/webp" />
+        <img class="member-img__img" src={Astro.props.images.png} alt={Astro.props.name} />
+      </picture>
+    </div>
+
+    <div class="member-info">
+      <div class="dots">
+        <DotLinks
+          links={crew.map((member) => ({
+            href: "/crew-" + uriEncode(member.role),
+            label: member.role,
+          }))}
+        />
+      </div>
+
+      <h2 class="h3 member-name">
+        <div class="h4 h4--gray member-name__role">{Astro.props.role}</div>{Astro.props.name}
+      </h2>
+      <p class="paragraph member-bio">{Astro.props.bio}</p>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  body {
+    background-image: url("/assets/crew/background-crew-mobile.jpg");
+    background-position: center top;
+    text-align: center;
+  }
+
+  .container {
+    padding: 1.5rem;
+  }
+
+  .member-img {
+    border-bottom: 1px solid #383b4b;
+  }
+
+  .member-img__img {
+    display: block;
+    height: 13.875rem;
+    margin: 2rem auto 0;
+  }
+
+  .member-info {
+    margin-top: 2rem;
+  }
+
+  .member-name {
+    margin-top: 2rem;
+  }
+
+  .member-name__role {
+    margin-bottom: 0.5rem;
+  }
+
+  .member-bio {
+    margin-top: 1rem;
+  }
+</style>

@@ -2,10 +2,11 @@
 import Tabs from "../components/Tabs.astro";
 import { destinations } from "../data.json";
 import Layout from "../layouts/Layout.astro";
+import { uriEncode } from "../utils/urls";
 
 export function getStaticPaths() {
   return destinations.map((destination) => ({
-    params: { destination: destination.name.toLowerCase() },
+    params: { destination: uriEncode(destination.name) },
     props: { ...destination },
   }));
 }
@@ -15,7 +16,7 @@ export function getStaticPaths() {
   <main class="container">
     <div>
       <h1 class="h5 h5--white main-title">
-        <span class="title-number">01</span>Pick your destination
+        <span class="title-number" aria-hidden="true">01</span>Pick your destination
       </h1>
       <picture>
         <source srcset={Astro.props.images.webp} type="image/webp" />
@@ -27,7 +28,7 @@ export function getStaticPaths() {
       <div class="tabs-wrapper">
         <Tabs
           links={destinations.map((destination) => ({
-            href: `/destination-${destination.name.toLowerCase()}`,
+            href: `/destination-${uriEncode(destination.name)}`,
             label: destination.name,
           }))}
         />
