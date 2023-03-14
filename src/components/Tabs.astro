@@ -11,6 +11,7 @@ const { links } = Astro.props;
     links.map((link) => (
       <li>
         <a
+          aria-current={Astro.url.pathname === link.href ? "page" : undefined}
           class:list={{ tabs__link: true, "tabs__link--active": Astro.url.pathname === link.href }}
           href={link.href}
         >
@@ -24,10 +25,11 @@ const { links } = Astro.props;
 <style>
   .tabs {
     display: flex;
+    flex-wrap: wrap;
     list-style-type: none;
     padding: 0;
     margin: 0;
-    justify-content: center;
+    justify-content: var(--justify-content, flex-start);
     gap: 1.625rem;
     font-family: var(--ff-sans-cond);
     font-size: var(--fs-nav);
@@ -46,5 +48,11 @@ const { links } = Astro.props;
   .tabs__link--active {
     color: hsl(var(--clr-white));
     box-shadow: inset 0 -3px 0 hsl(var(--clr-white));
+  }
+
+  @media (min-width: 48rem) {
+    .tabs__link {
+      min-height: 2.125rem;
+    }
   }
 </style>

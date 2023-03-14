@@ -1,10 +1,16 @@
 ---
+interface Props {
+  activeLink: string;
+}
+
 const links = [
   { href: "/", label: "Home" },
   { href: "/destination-moon", label: "Destination" },
   { href: "#", label: "Crew" },
   { href: "#", label: "Technology" },
 ];
+
+const { activeLink } = Astro.props;
 ---
 
 <script>
@@ -50,7 +56,10 @@ const links = [
           <li>
             <a
               aria-current={Astro.url.pathname === link.href ? "page" : undefined}
-              class="navbar__link navtext"
+              class:list={[
+                "navbar__link navtext",
+                link.href === activeLink && "navbar__link--active",
+              ]}
               href={link.href}
             >
               <span aria-hidden="true" class="navbar__link-num">
@@ -149,7 +158,8 @@ const links = [
     box-shadow: inset -4px 0 0 hsl(var(--clr-white) / 50%);
   }
 
-  .navbar__link[aria-current="page"] {
+  .navbar__link[aria-current="page"],
+  .navbar__link--active {
     box-shadow: inset -4px 0 0 hsl(var(--clr-white));
   }
 
@@ -193,7 +203,8 @@ const links = [
       box-shadow: inset 0 -4px 0 hsl(var(--clr-white) / 50%);
     }
 
-    .navbar__link[aria-current="page"] {
+    .navbar__link[aria-current="page"],
+    .navbar__link--active {
       box-shadow: inset 0 -4px 0 hsl(var(--clr-white));
     }
   }

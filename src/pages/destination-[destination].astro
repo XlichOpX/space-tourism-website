@@ -11,18 +11,20 @@ export function getStaticPaths() {
 }
 ---
 
-<Layout title="Space Tourism">
+<Layout title="Space Tourism" activeLink="/destination-moon">
   <main class="container">
     <div>
-      <h1 class="h5 h5--white"><span class="title-number">01</span>Pick your destination</h1>
+      <h1 class="h5 h5--white main-title">
+        <span class="title-number">01</span>Pick your destination
+      </h1>
       <picture>
         <source srcset={Astro.props.images.webp} type="image/webp" />
-        <img class="destination-img" src={Astro.props.images.png} alt="The moon" />
+        <img class="destination-img" src={Astro.props.images.png} alt={Astro.props.name} />
       </picture>
     </div>
 
     <div class="destination-info">
-      <div>
+      <div class="tabs-wrapper">
         <Tabs
           links={destinations.map((destination) => ({
             href: `/destination-${destination.name.toLowerCase()}`,
@@ -38,12 +40,12 @@ export function getStaticPaths() {
 
       <div class="destination-meta">
         <div>
-          <h3 class="sh2">Avg. Distance</h3>
+          <h3 class="sh2 destination-meta--title">Avg. Distance</h3>
           <p class="sh1">{Astro.props.distance}</p>
         </div>
 
         <div>
-          <h3 class="sh2">Est. Travel time</h3>
+          <h3 class="sh2 destination-meta--title">Est. Travel time</h3>
           <p class="sh1">{Astro.props.travel}</p>
         </div>
       </div>
@@ -73,6 +75,10 @@ export function getStaticPaths() {
     margin-top: 1.625rem;
   }
 
+  .tabs-wrapper {
+    --justify-content: center;
+  }
+
   .destination-title {
     margin-top: 1.25rem;
   }
@@ -86,5 +92,83 @@ export function getStaticPaths() {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+  }
+
+  .destination-meta--title {
+    margin-bottom: 0.75rem;
+  }
+
+  /* tablet */
+  @media (min-width: 48rem) {
+    body {
+      background-image: url("/assets/destination/background-destination-tablet.jpg");
+    }
+
+    .container {
+      padding: 2.5rem 6.125rem;
+    }
+
+    .main-title {
+      text-align: left;
+      margin-left: -4rem;
+    }
+
+    .destination-img {
+      margin-top: 3.75rem;
+      max-width: 18.75rem;
+    }
+
+    .destination-info {
+      margin-top: 3.375rem;
+    }
+
+    .destination-title {
+      margin-top: 2rem;
+    }
+
+    .destination-description {
+      margin-top: 0.5rem;
+    }
+
+    .separator {
+      margin: 3rem 0 1.75rem;
+    }
+
+    .destination-meta {
+      flex-direction: row;
+      justify-content: center;
+      gap: 5rem;
+    }
+  }
+
+  @media (min-width: 70rem) {
+    body {
+      background-image: url("/assets/destination/background-destination-desktop.jpg");
+      text-align: left;
+    }
+
+    .container {
+      padding: 4.75rem 0 2rem 4rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10rem;
+      align-items: end;
+    }
+
+    .destination-info {
+      margin: 0;
+    }
+
+    .tabs-wrapper {
+      --justify-content: flex-start;
+    }
+
+    .destination-meta {
+      justify-content: flex-start;
+    }
+
+    .destination-img {
+      max-width: 27.8125rem;
+    }
   }
 </style>
