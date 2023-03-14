@@ -1,7 +1,7 @@
 ---
 const links = [
   { href: "/", label: "Home" },
-  { href: "#", label: "Destination" },
+  { href: "/destination-moon", label: "Destination" },
   { href: "#", label: "Crew" },
   { href: "#", label: "Technology" },
 ];
@@ -36,7 +36,7 @@ const links = [
 
 <header class="navbar">
   <div class="navbar__logo">
-    <img class="navbar__logo-img" src="/shared/logo.svg" alt="An illustrated star" />
+    <img class="navbar__logo-img" src="/assets/shared/logo.svg" alt="An illustrated star" />
   </div>
 
   <button type="button" class="navbar__toggler" aria-expanded="false" aria-controls="navbar__nav">
@@ -87,7 +87,7 @@ const links = [
     z-index: 1;
     border: 0;
     background-color: transparent;
-    background-image: url("/shared/icon-hamburger.svg");
+    background-image: url("/assets/shared/icon-hamburger.svg");
     background-position: center;
     background-repeat: no-repeat;
     width: 1.5rem;
@@ -96,7 +96,7 @@ const links = [
   }
 
   .navbar__toggler--close {
-    background-image: url("/shared/icon-close.svg");
+    background-image: url("/assets/shared/icon-close.svg");
     position: fixed;
     right: 0;
   }
@@ -135,7 +135,7 @@ const links = [
   }
 
   .navbar__link {
-    color: var(--clr-white);
+    color: hsl(var(--clr-white));
     text-decoration: none;
     display: flex;
     height: 100%;

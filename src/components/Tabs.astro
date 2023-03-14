@@ -1,0 +1,50 @@
+---
+interface Props {
+  links: { href: string; label: string }[];
+}
+
+const { links } = Astro.props;
+---
+
+<ul class="tabs">
+  {
+    links.map((link) => (
+      <li>
+        <a
+          class:list={{ tabs__link: true, "tabs__link--active": Astro.url.pathname === link.href }}
+          href={link.href}
+        >
+          {link.label}
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .tabs {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    gap: 1.625rem;
+    font-family: var(--ff-sans-cond);
+    font-size: var(--fs-nav);
+    text-transform: uppercase;
+    letter-spacing: var(--ls-1);
+  }
+
+  .tabs__link {
+    color: hsl(var(--clr-accent));
+    text-decoration: none;
+    display: flex;
+    align-items: space-between;
+    min-height: 1.75rem;
+  }
+
+  .tabs__link--active {
+    color: hsl(var(--clr-white));
+    box-shadow: inset 0 -3px 0 hsl(var(--clr-white));
+  }
+</style>

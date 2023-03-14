@@ -1,0 +1,90 @@
+---
+import Tabs from "../components/Tabs.astro";
+import { destinations } from "../data.json";
+import Layout from "../layouts/Layout.astro";
+
+export function getStaticPaths() {
+  return destinations.map((destination) => ({
+    params: { destination: destination.name.toLowerCase() },
+    props: { ...destination },
+  }));
+}
+---
+
+<Layout title="Space Tourism">
+  <main class="container">
+    <div>
+      <h1 class="h5 h5--white"><span class="title-number">01</span>Pick your destination</h1>
+      <picture>
+        <source srcset={Astro.props.images.webp} type="image/webp" />
+        <img class="destination-img" src={Astro.props.images.png} alt="The moon" />
+      </picture>
+    </div>
+
+    <div class="destination-info">
+      <div>
+        <Tabs
+          links={destinations.map((destination) => ({
+            href: `/destination-${destination.name.toLowerCase()}`,
+            label: destination.name,
+          }))}
+        />
+      </div>
+
+      <h2 class="h2 destination-title">{Astro.props.name}</h2>
+      <p class="paragraph destination-description">{Astro.props.description}</p>
+
+      <hr class="separator" />
+
+      <div class="destination-meta">
+        <div>
+          <h3 class="sh2">Avg. Distance</h3>
+          <p class="sh1">{Astro.props.distance}</p>
+        </div>
+
+        <div>
+          <h3 class="sh2">Est. Travel time</h3>
+          <p class="sh1">{Astro.props.travel}</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  body {
+    background-image: url("/assets/destination/background-destination-mobile.jpg");
+    background-position: center top;
+    text-align: center;
+  }
+
+  .container {
+    padding: 1.5rem;
+  }
+
+  .destination-img {
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 10.625rem;
+    aspect-ratio: 1;
+  }
+
+  .destination-info {
+    margin-top: 1.625rem;
+  }
+
+  .destination-title {
+    margin-top: 1.25rem;
+  }
+
+  .separator {
+    margin: 2rem 0;
+    border-color: #383b4b;
+  }
+
+  .destination-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+</style>
