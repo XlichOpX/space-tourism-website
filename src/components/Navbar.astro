@@ -67,7 +67,7 @@ const links = [
 
 <style>
   .navbar {
-    padding: 2.5rem 0 0 0;
+    padding-top: 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -160,6 +160,10 @@ const links = [
 
   /* tablet */
   @media (min-width: 48rem) {
+    .navbar {
+      padding-top: 0;
+    }
+
     .navbar__logo {
       margin-left: 2.5rem;
     }
@@ -196,6 +200,10 @@ const links = [
 
   /* desktop */
   @media (min-width: 70rem) {
+    .navbar {
+      padding-top: 2.5rem;
+    }
+
     .navbar__logo {
       margin-left: 3.5rem;
     }
