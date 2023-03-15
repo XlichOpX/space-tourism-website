@@ -13,7 +13,7 @@ export function getStaticPaths() {
 ---
 
 <Layout title={"Technology - " + Astro.props.name} activeLink="/technology-launch-vehicle">
-  <main class="main-content">
+  <main>
     <div class="container">
       <h1 class="h5 h5--white main-title">
         <span class="title-number" aria-hidden="true">03</span>SPACE LAUNCH 101
@@ -62,16 +62,17 @@ export function getStaticPaths() {
     text-align: center;
   }
 
-  .main-content {
-    padding-bottom: 1rem;
+  .container {
+    padding: 0 1.5rem 0;
   }
 
-  .container {
-    padding: 1.5rem 1.5rem 0;
+  .main-title {
+    margin-top: 1.5rem;
   }
 
   .technology {
-    margin: 2rem 0;
+    margin: 2rem 0 0;
+    padding: 0 0 2rem;
   }
 
   .technology__img {
@@ -79,6 +80,7 @@ export function getStaticPaths() {
     width: 100%;
     min-height: 10.625rem;
     object-fit: cover;
+    margin-bottom: 2.125rem;
   }
 
   .technology__img--portrait {
@@ -95,5 +97,26 @@ export function getStaticPaths() {
 
   .technology__description {
     margin: 1rem 0 0 0;
+  }
+
+  /* tablet */
+  @media (min-width: 48rem) {
+    body {
+      background-image: url("/assets/technology/background-technology-tablet.jpg");
+    }
+
+    .main-title {
+      text-align: left;
+      margin: 2.5rem 0 3.75rem;
+    }
+
+    .technology__img {
+      margin-bottom: 3.5rem;
+    }
+
+    .technology__info {
+      margin: 2.75rem auto 0;
+      max-width: 28.625rem;
+    }
   }
 </style>
