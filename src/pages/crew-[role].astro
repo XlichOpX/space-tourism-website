@@ -18,27 +18,29 @@ export function getStaticPaths() {
       <span class="title-number" aria-hidden="true">02</span>Meet your crew
     </h1>
 
-    <div class="member-img">
-      <picture>
-        <source srcset={Astro.props.images.webp} type="image/webp" />
-        <img class="member-img__img" src={Astro.props.images.png} alt={Astro.props.name} />
-      </picture>
-    </div>
-
-    <div class="member-info">
-      <div class="dots">
-        <DotLinks
-          links={crew.map((member) => ({
-            href: "/crew-" + uriEncode(member.role),
-            label: member.role,
-          }))}
-        />
+    <div class="member">
+      <div class="member__img-wrap">
+        <picture>
+          <source srcset={Astro.props.images.webp} type="image/webp" />
+          <img class="member__img" src={Astro.props.images.png} alt={Astro.props.name} />
+        </picture>
       </div>
 
-      <h2 class="h3 member-name">
-        <div class="h4 h4--gray member-name__role">{Astro.props.role}</div>{Astro.props.name}
-      </h2>
-      <p class="paragraph member-bio">{Astro.props.bio}</p>
+      <div class="member__info">
+        <div class="dots-wrap">
+          <DotLinks
+            links={crew.map((member) => ({
+              href: "/crew-" + uriEncode(member.role),
+              label: member.role,
+            }))}
+          />
+        </div>
+
+        <h2 class="h3 member__name">
+          <div class="h4 h4--gray member__role">{Astro.props.role}</div>{Astro.props.name}
+        </h2>
+        <p class="paragraph member__bio">{Astro.props.bio}</p>
+      </div>
     </div>
   </main>
 </Layout>
@@ -54,29 +56,70 @@ export function getStaticPaths() {
     padding: 1.5rem;
   }
 
-  .member-img {
+  .member__img-wrap {
     border-bottom: 1px solid #383b4b;
   }
 
-  .member-img__img {
+  .member__img {
     display: block;
     height: 13.875rem;
     margin: 2rem auto 0;
   }
 
-  .member-info {
+  .member__info {
     margin-top: 2rem;
   }
 
-  .member-name {
+  .member__name {
     margin-top: 2rem;
   }
 
-  .member-name__role {
+  .member__role {
     margin-bottom: 0.5rem;
   }
 
-  .member-bio {
+  .member__bio {
     margin-top: 1rem;
+  }
+
+  /* tablet */
+  @media (min-width: 48rem) {
+    body {
+      background-image: url("/assets/crew/background-crew-tablet.jpg");
+    }
+
+    .container {
+      padding: 2.5rem 0;
+      max-width: 28.625rem;
+    }
+
+    .main-title {
+      text-align: left;
+      margin-left: -7rem;
+    }
+
+    .member,
+    .member__info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dots-wrap {
+      margin-top: 2.5rem;
+      order: 3;
+    }
+
+    .member__img-wrap {
+      border: 0;
+    }
+
+    .member__img {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      right: 50%;
+      transform: translateX(-50%);
+      height: 33.25rem;
+    }
   }
 </style>
