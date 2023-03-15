@@ -88,8 +88,14 @@ export function getStaticPaths() {
       background-image: url("/assets/crew/background-crew-tablet.jpg");
     }
 
+    body,
     .container {
-      padding: 2.5rem 0;
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+
+    .container {
+      padding: 2.5rem 0 0;
       max-width: 28.625rem;
     }
 
@@ -98,7 +104,11 @@ export function getStaticPaths() {
       margin-left: -7rem;
     }
 
-    .member,
+    .member {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+
     .member__info {
       display: flex;
       flex-direction: column;
@@ -111,15 +121,63 @@ export function getStaticPaths() {
 
     .member__img-wrap {
       border: 0;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      margin-top: 2.5rem;
     }
 
     .member__img {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      right: 50%;
-      transform: translateX(-50%);
-      height: 33.25rem;
+      object-fit: contain;
+      margin: 0;
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  /* desktop */
+  @media (min-width: 70rem) {
+    body {
+      background-image: url("/assets/crew/background-crew-desktop.jpg");
+      text-align: left;
+    }
+
+    .container {
+      max-width: 70rem;
+      padding-bottom: 0;
+    }
+
+    .main-title {
+      margin: 0;
+    }
+
+    .member {
+      flex-direction: row;
+    }
+
+    .member > * {
+      flex: 1 1 100%;
+    }
+
+    .dots-wrap {
+      --justify-content: flex-start;
+      margin-top: 7.5rem;
+    }
+
+    .member__img-wrap {
+      order: 2;
+      margin: 0 0 0 auto;
+    }
+
+    .member__info {
+      align-self: end;
+      margin-bottom: 5.875rem;
+    }
+
+    .member__bio {
+      max-width: 27.75rem;
+      margin-top: 1.6875rem;
     }
   }
 </style>
