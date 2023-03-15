@@ -1,0 +1,99 @@
+---
+import NumberLinks from "../components/NumberLinks.astro";
+import { technology } from "../data.json";
+import Layout from "../layouts/Layout.astro";
+import { uriEncode } from "../utils/urls";
+
+export function getStaticPaths() {
+  return technology.map((tech) => ({
+    params: { name: uriEncode(tech.name) },
+    props: { ...tech },
+  }));
+}
+---
+
+<Layout title={"Technology - " + Astro.props.name} activeLink="/technology-launch-vehicle">
+  <main class="main-content">
+    <div class="container">
+      <h1 class="h5 h5--white main-title">
+        <span class="title-number" aria-hidden="true">03</span>SPACE LAUNCH 101
+      </h1>
+    </div>
+
+    <div class="technology">
+      <img
+        class="technology__img technology__img--landscape"
+        src={Astro.props.images.landscape}
+        alt={Astro.props.name}
+      />
+      <img
+        class="technology__img technology__img--portrait"
+        src={Astro.props.images.portrait}
+        alt={Astro.props.name}
+      />
+
+      <div class="container">
+        <div class="links-wrap">
+          <NumberLinks
+            links={technology.map((tech) => ({
+              href: `/technology-${uriEncode(tech.name)}`,
+              label: tech.name,
+            }))}
+          />
+        </div>
+
+        <div class="technology__info">
+          <h2 class="h3">
+            <div class="h5">The terminology…</div>
+            <div class="technology__title">{Astro.props.name}</div>
+          </h2>
+
+          <p class="paragraph technology__description">{Astro.props.description}</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  body {
+    background-image: url("/assets/technology/background-technology-mobile.jpg");
+    background-position: center top;
+    text-align: center;
+  }
+
+  .main-content {
+    padding-bottom: 1rem;
+  }
+
+  .container {
+    padding: 1.5rem 1.5rem 0;
+  }
+
+  .technology {
+    margin: 2rem 0;
+  }
+
+  .technology__img {
+    display: block;
+    width: 100%;
+    min-height: 10.625rem;
+    object-fit: cover;
+  }
+
+  .technology__img--portrait {
+    display: none;
+  }
+
+  .technology__info {
+    margin: 1.625rem 0 0 0;
+  }
+
+  .technology__title {
+    margin: 0.5625rem 0 0 0;
+  }
+
+  .technology__description {
+    margin: 1rem 0 0 0;
+  }
+</style>
