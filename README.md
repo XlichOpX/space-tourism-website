@@ -1,17 +1,68 @@
-# Astro Starter Kit: Basics
+# Frontend Mentor - Space tourism website solution
 
-```
-npm create astro@latest -- --template basics
-```
+This is a solution to the [Space tourism website challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/space-tourism-multipage-website-gRWj1URZ3). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## Table of contents
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
-![basics](https://user-images.githubusercontent.com/4677417/186188965-73453154-fdec-4d6b-9c34-cb35c248ae5b.png)
+**Note: Delete this note and update the table of contents based on what sections you keep.**
 
+## Overview
+
+### The challenge
+
+Users should be able to:
+
+- View the optimal layout for each of the website's pages depending on their device's screen size
+- See hover states for all interactive elements on the page
+- View each page and be able to toggle between the tabs to see new information
+
+### Screenshot
+
+![](./screenshot.png)
+
+### Links
+
+- Solution URL: https://github.com/XlichOpX/space-tourism-website
+- Live Site URL: https://space-tourism-website-xlichopx.vercel.app/
+
+## My process
+
+### Built with
+
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- CSS Grid
+- Mobile-first workflow
+- [Astro](https://astro.build/) - All-in-one web framework for building fast, content-focused websites.
+
+### What I learned
+
+This was my first time doing a challenge like this and using pure CSS to style a complete website. Although I had learned CSS before, I always used component libraries or frameworks like Chakra UI or TailwindCSS. Therefore, I faced some challenges with CSS structure and organization. For example, I learned how to set up a basic frame from Kevin Powell’s version of this challenge. I also adopted the BEM methodology for writing CSS in a consistent way.
+
+Another challenge was adjusting the site to different screen sizes while matching the figma mockup as closely as possible. I had to rediscover CSS Grid and Flexbox layouts for this purpose. Working with a figma file was a nice experience, but I noticed some details that were not clear in the design system, such as font size differences and letter spacing across screen sizes.
+
+### Useful resources
+
+- [Get BEM](https://getbem.com/) - This helped me adopt the BEM methodology.
+- [Kevin Powell's take on this challenge](https://scrimba.com/learn/spacetravel) - I learned a lot from this course, especially the way he structures his CSS foundation.
+
+## Author
+
+- Website - [Yhan Montaño](https://yhanmontanodev.vercel.app/)
+- Frontend Mentor - [@XlichOpX](https://www.frontendmentor.io/profile/XlichOpX)
 
 ## 🚀 Project Structure
 
