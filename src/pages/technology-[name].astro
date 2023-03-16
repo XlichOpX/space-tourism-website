@@ -20,19 +20,20 @@ export function getStaticPaths() {
       </h1>
     </div>
 
-    <div class="technology">
+    <img
+      class="technology__img technology__img-mobile"
+      src={Astro.props.images.landscape}
+      alt={Astro.props.name}
+    />
+
+    <div class="container technology">
       <img
-        class="technology__img technology__img--landscape"
-        src={Astro.props.images.landscape}
-        alt={Astro.props.name}
-      />
-      <img
-        class="technology__img technology__img--portrait"
+        class="technology__img technology__img-desktop"
         src={Astro.props.images.portrait}
         alt={Astro.props.name}
       />
 
-      <div class="container">
+      <div class="technology__content">
         <div class="links-wrap">
           <NumberLinks
             links={technology.map((tech) => ({
@@ -68,11 +69,12 @@ export function getStaticPaths() {
 
   .main-title {
     margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
   }
 
   .technology {
-    margin: 2rem 0 0;
-    padding: 0 0 2rem;
+    margin-top: 2rem;
+    padding-bottom: 2rem;
   }
 
   .technology__img {
@@ -83,7 +85,7 @@ export function getStaticPaths() {
     margin-bottom: 2.125rem;
   }
 
-  .technology__img--portrait {
+  .technology__img-desktop {
     display: none;
   }
 
@@ -107,7 +109,8 @@ export function getStaticPaths() {
 
     .main-title {
       text-align: left;
-      margin: 2.5rem 0 3.75rem;
+      margin-top: 2.5rem;
+      margin-bottom: 3.75rem;
     }
 
     .technology__img {
@@ -117,6 +120,54 @@ export function getStaticPaths() {
     .technology__info {
       margin: 2.75rem auto 0;
       max-width: 28.625rem;
+    }
+  }
+
+  /* desktop */
+  @media (min-width: 70rem) {
+    body {
+      background-image: url("/assets/technology/background-technology-desktop.jpg");
+      text-align: left;
+    }
+
+    .main-title {
+      margin: 2.5rem 0 3.75rem;
+    }
+
+    .technology {
+      display: grid;
+      grid-template-columns: minmax(1.5rem, 11rem) 39.375rem minmax(32rem, 1fr);
+      align-items: center;
+      max-width: 90rem;
+      padding: 0;
+    }
+
+    .technology__img-mobile {
+      display: none;
+    }
+
+    .technology__img-desktop {
+      display: block;
+      grid-column: 3;
+      padding-left: 8.125rem;
+      margin: 0;
+    }
+
+    .technology__content {
+      display: flex;
+      gap: 5rem;
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    .links-wrap {
+      --flex-direction: column;
+      --gap: 2rem;
+    }
+
+    .technology__info {
+      margin: 0;
+      max-width: initial;
     }
   }
 </style>
